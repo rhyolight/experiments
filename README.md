@@ -8,3 +8,5 @@ t6
 
 bbranch
 bbranch
+
+artifact tests

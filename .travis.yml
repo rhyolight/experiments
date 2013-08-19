@@ -1,8 +1,20 @@
+--- 
+env: 
+  global: 
+  - ARTIFACTS_AWS_REGION=us-west-2
+  - ARTIFACTS_S3_BUCKET=artifacts.numenta.org
+  - secure: |-
+      IM8xirNobfi379pKKFXGDbty8hprucegmqP9Ax9fy9Gqzjbi8ZEj+J08bujY
+      +GrHYuB4NRcHxltweI17/pRmY3uJwnbWKMOQh47Nyiqa1nFk2BWr9xvYtXp8
+      7vaVjbhF3G0fQ7R0gwbN2YOVYsw4nMRQeh83ocV5TyXm+/B1Ko8=
+  - secure: |-
+      Z14S+Gs2sNWsYLPA5qbhwJhgeaq+/4SHr9T5z4oD0Hk11O8k+7VzQNGfi3P7
+      pcQUOto3oIkL3UuCrKYKqwZM5ZpduA5NRm1Oqr0B8eR3gJjyrxqLx5bEx+jH
+      kw2eBhUibmuWds/wZpNt9Tlhi1uJyXIV6UCjfAfo3ylTFIJifiE=
+after_script: 
+- travis-artifacts upload --path output.txt --target-path artifacts/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID
 language: python
-compiler:
-  - gcc
-python:
-  - "2.6"
-
-install: "echo install"
-script: "echo script"
+script: echo script here; echo blargh > output.txt
+before_install: 
+- gem install travis-artifacts
+install: echo install
