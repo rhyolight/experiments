@@ -1,20 +1,20 @@
 --- 
-install: echo install
-before_install: 
-- gem install travis-artifacts
-after_script: 
-- travis-artifacts upload --path output.txt --target-path artifacts/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID
 env: 
   global: 
   - ARTIFACTS_AWS_REGION=us-west-2
   - ARTIFACTS_S3_BUCKET=artifacts.numenta.org
   - secure: |-
-      BbAZUPVMgrWGwt6oFH/Zr13IuD1+jC4bdupDhwqvqlmBrTVMjOtKifsNwLap
-      5LMkCsqSrJM91qqXn6gaigK6dCPXK+83Sd9gZs4E4Cq+YnJcdvGmWzgCGXF8
-      BQybAZtg1+cQ/1XkfL5A4Ap+s9CCVqyBsBjCppanWetQPrcLX9M=
+      IM8xirNobfi379pKKFXGDbty8hprucegmqP9Ax9fy9Gqzjbi8ZEj+J08bujY
+      +GrHYuB4NRcHxltweI17/pRmY3uJwnbWKMOQh47Nyiqa1nFk2BWr9xvYtXp8
+      7vaVjbhF3G0fQ7R0gwbN2YOVYsw4nMRQeh83ocV5TyXm+/B1Ko8=
   - secure: |-
-      NXIa1QDvtYgbHr27DBJgGSn49L81LycfmLKRM4YJX2cBbGUEwKMtrTvtS0kN
-      +7/0rSYrev9tXeKHPwUxmeMkldGGZhaN33HjBIGZ+my5VcsR2SxeQltnAqnU
-      XJ3RfS+HUUpx+KxeaontZD8ZR0HQLr1Zmp8K344wEwU7Q8HgsSk=
+      Z14S+Gs2sNWsYLPA5qbhwJhgeaq+/4SHr9T5z4oD0Hk11O8k+7VzQNGfi3P7
+      pcQUOto3oIkL3UuCrKYKqwZM5ZpduA5NRm1Oqr0B8eR3gJjyrxqLx5bEx+jH
+      kw2eBhUibmuWds/wZpNt9Tlhi1uJyXIV6UCjfAfo3ylTFIJifiE=
+after_script: 
+- travis-artifacts upload --path output.txt --target-path artifacts/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID
 language: python
 script: echo script here; echo blargh > output.txt
+before_install: 
+- gem install travis-artifacts
+install: echo install
