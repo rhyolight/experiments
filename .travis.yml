@@ -1,2 +1,3 @@
 --- 
+before_script: exit -1
 script: sleep 3; echo $TRAVIS_COMMIT
