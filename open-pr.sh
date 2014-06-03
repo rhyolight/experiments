@@ -9,5 +9,5 @@ echo $SHA > nupic_sha.txt
 git add nupic_sha.txt
 git commit -m "Updated NuPIC Core SHA."
 # git push origin core-update-${SHA}
-git pull-request -m "Updates nupic.core to ${SHA}."
+hub pull-request -m "Updates nupic.core to ${SHA}."
 git checkout master
