@@ -1,2 +1,2 @@
 --- 
-script: sleep 3000; echo $TRAVIS_COMMIT;
+script: sleep 6000; echo $TRAVIS_COMMIT;
