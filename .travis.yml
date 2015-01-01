@@ -16,10 +16,10 @@ env:
     - PATH=$TRAVIS_BUILD_DIR/python/bin:$PATH
 
 before_install:
-  - "if [ ${TRAVIS_OS_NAME:-'linux'} = 'osx' ]; then . ./ci/travis/before_install-osx.sh; fi"
+  - ". ./ci/travis/before_install-osx.sh"
 
 install:
-  - "if [ ${TRAVIS_OS_NAME:-'linux'} = 'osx' ]; then . ./ci/travis/install-osx.sh; fi"
+  - ". ./ci/travis/install-osx.sh"
 
 script:
   - . ./ci/travis/before_deploy.sh
