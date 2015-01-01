@@ -1,2 +1,25 @@
---- 
-script: sleep 3; echo $TRAVIS_COMMIT;
+branches:
+  except:
+    - gh-pages
+
+language: cpp
+
+os:
+  - osx
+
+compiler:
+  - clang
+
+env:
+  global:
+    - NUPIC=$TRAVIS_BUILD_DIR
+    - PATH=$TRAVIS_BUILD_DIR/python/bin:$PATH
+
+before_install:
+  - "if [ ${TRAVIS_OS_NAME:-'linux'} = 'osx' ]; then . ./ci/travis/before_install-osx.sh; fi"
+
+install:
+  - "if [ ${TRAVIS_OS_NAME:-'linux'} = 'osx' ]; then . ./ci/travis/install-osx.sh; fi"
+
+script:
+  - . ./ci/travis/before_deploy.sh
