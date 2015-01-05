@@ -5,10 +5,18 @@ branches:
 language: cpp
 
 os:
+  - linux
   - osx
 
 compiler:
   - clang
+  - gcc
+
+matrix:
+  # This excludes OSX builds from the build matrix for gcc and Python 2.6
+  exclude:
+    - os: osx
+      compiler: gcc
 
 env:
   global:
@@ -16,10 +24,13 @@ env:
     - PATH=$TRAVIS_BUILD_DIR/python/bin:$PATH
 
 before_install:
-  - ". ./ci/travis/before_install-osx.sh"
+  - "if [ ${TRAVIS_OS_NAME:-'linux'} = 'linux' ]; then . ./ci/travis/before_install-linux.sh; fi"
+  - "if [ ${TRAVIS_OS_NAME:-'linux'} = 'osx' ]; then . ./ci/travis/before_install-osx.sh; fi"
 
 install:
-  - ". ./ci/travis/install-osx.sh"
+  - "echo \"CC: ${CC}\""
+  - echo DUMMY INSTALL STEP
 
 script:
   - . ./ci/travis/before_deploy.sh
+  - "if [ ( \"${TRAVIS_OS_NAME}--${CC}\" = 'linux--gcc-4.8' ) || ( \"{TRAVIS_OS_NAME}--${CC}\" = 'osx--clang' ) ]; then . ./ci/travis/after_success-release.sh; fi"
