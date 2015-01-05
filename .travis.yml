@@ -33,4 +33,4 @@ install:
 
 script:
   - . ./ci/travis/before_deploy.sh
-  - "if [ ( \"${TRAVIS_OS_NAME}--${CC}\" = 'linux--gcc-4.8' ) || ( \"{TRAVIS_OS_NAME}--${CC}\" = 'osx--clang' ) ]; then . ./ci/travis/after_success-release.sh; fi"
+  - "if [ \"${TRAVIS_OS_NAME}--${CC}\" = 'linux--gcc-4.8' ] || [ \"${TRAVIS_OS_NAME}--${CC}\" = 'osx--clang' ]; then . ./ci/travis/after_success-release.sh; fi"
