@@ -27,8 +27,6 @@ echo
 pip --version
 
 echo "Installing wheel..."
-pip install wheel || exit
-echo "Installing twine..."
-pip install twine || exit
+pip install wheel --user || exit
 
 python -c "import wheel; from wheel.pep425tags import get_supported; print ['-'.join(t) for t in get_supported()]"
