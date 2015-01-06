@@ -6,17 +6,11 @@ language: cpp
 
 os:
   - linux
-  - osx
+  # - osx
 
 compiler:
-  - clang
+  # - clang
   - gcc
-
-matrix:
-  # This excludes OSX builds from the build matrix for gcc and Python 2.6
-  exclude:
-    - os: osx
-      compiler: gcc
 
 env:
   global:
@@ -32,4 +26,5 @@ install:
   - echo DUMMY INSTALL STEP
 
 script:
-  - "if [ \"${TRAVIS_OS_NAME}--${CC}\" = 'linux--gcc-4.8' ] || [ \"${TRAVIS_OS_NAME}--${CC}\" = 'osx--clang' ]; then . ./ci/travis/after_success-release.sh; fi"
+  - "if [ \"${TRAVIS_OS_NAME}--${CC}\" = 'linux--gcc-4.8' ]; then . ./ci/travis/after_success-release-linux.sh; fi"
+  - "if [ \"${TRAVIS_OS_NAME}--${CC}\" = 'osx--clang' ]; then . ./ci/travis/after_success-release-osx.sh; fi"
